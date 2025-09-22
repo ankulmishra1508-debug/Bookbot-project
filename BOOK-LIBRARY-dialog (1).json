@@ -1,0 +1,184 @@
+{
+  "intents": [
+    {
+      "intent": "Greeting",
+      "examples": [
+        {
+          "text": "Hello"
+        },
+        {
+          "text": "Hii"
+        },
+        {
+          "text": "Hye"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "Mood",
+      "examples": [
+        {
+          "text": "recommend comedy story"
+        },
+        {
+          "text": "recommend romantic story"
+        },
+        {
+          "text": "recommend sad story book"
+        }
+      ],
+      "description": ""
+    }
+  ],
+  "entities": [
+    {
+      "entity": "Location",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "Jaunpur",
+          "synonyms": [
+            "Gariyaw",
+            "Jaunpur",
+            "Suriyawa"
+          ]
+        },
+        {
+          "type": "synonyms",
+          "value": "Prayagraj",
+          "synonyms": [
+            "Ada mod",
+            "Civil line",
+            "Jhalwa",
+            "Naini"
+          ]
+        }
+      ],
+      "fuzzy_match": true
+    }
+  ],
+  "metadata": {
+    "api_version": {
+      "major_version": "v2",
+      "minor_version": "2018-11-08"
+    }
+  },
+  "dialog_nodes": [
+    {
+      "type": "standard",
+      "title": "Anything else",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "I didn't understand. You can try rephrasing."
+              },
+              {
+                "text": "Can you reword your statement? I'm not understanding."
+              },
+              {
+                "text": "I didn't get your meaning."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "anything_else",
+      "dialog_node": "Anything else",
+      "previous_sibling": "node_5_1758561404256",
+      "disambiguation_opt_out": true
+    },
+    {
+      "type": "standard",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Hello!   Welcome in AI world, How can I help you?"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "#Greeting",
+      "dialog_node": "node_10_1758561013647",
+      "previous_sibling": "Welcome"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Thankyou for your advice ,  I wish good for you"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "#Mood",
+      "dialog_node": "node_3_1758561188543",
+      "previous_sibling": "node_10_1758561013647"
+    },
+    {
+      "type": "standard",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Thankyou for your address details..\n"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "@Location",
+      "dialog_node": "node_5_1758561404256",
+      "previous_sibling": "node_3_1758561188543"
+    },
+    {
+      "type": "standard",
+      "title": "Welcome",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Hello. How can I help you?\n"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "welcome",
+      "dialog_node": "Welcome"
+    }
+  ],
+  "counterexamples": [
+    {
+      "text": "Ada mod"
+    },
+    {
+      "text": "gariyaw"
+    }
+  ],
+  "learning_opt_out": false,
+  "language": "en",
+  "description": "created for assistant 6b018634-c8aa-4963-b67d-cd585b46c717",
+  "name": "BOOK LIBRARY-dialog"
+}
